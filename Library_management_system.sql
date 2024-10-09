@@ -114,3 +114,26 @@ select Emp_name, Salary from Employee Order by salary desc;
 Select Books.Book_title, Customer.Customer_name from Books 
 Join Issuestatus on Books.Book_title=IssueStatus.Issued_book_name
 JOIN Customer ON IssueStatus.Issued_cust = Customer.Customer_Id;
+
+-- 4 Display the total count of books in each category. 
+
+select Category, count(*) as Total_Count from Books Group by Category;
+
+-- 5. Retrieve the employee names and their positions for the employees whose salaries are above Rs.50,000.
+
+Select Emp_name,Position from Employee where salary>50000;
+
+-- 6. List the customer names who registered before 2022-01-01 and have not issued any books yet.
+SELECT Customer.Customer_name
+FROM Customer
+LEFT JOIN IssueStatus ON Customer.Customer_Id = IssueStatus.Issued_cust
+WHERE Customer.Reg_date < '2022-01-01'
+AND IssueStatus.Issued_cust IS NULL;
+
+
+-- 7 Display the branch numbers and the total count of employees in each branch. 
+
+Select Branch_no,count(Emp_id) from Employee Group by Branch_no;
+
+
+-- 
