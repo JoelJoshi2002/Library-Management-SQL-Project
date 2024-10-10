@@ -135,5 +135,19 @@ AND IssueStatus.Issued_cust IS NULL;
 
 Select Branch_no,count(Emp_id) from Employee Group by Branch_no;
 
+-- 8 Display the names of customers who have issued books in the month of June 2023. 
+
+SELECT Customer_name FROM Customer WHERE Customer_Id IN (SELECT Issued_cust FROM IssueStatus WHERE Issued_date BETWEEN '2023-06-01' AND '2023-06-30');
+
+-- 9 SELECT Customer_name
+FROM Customer
+WHERE Customer_Id IN (
+    SELECT Issued_cust
+    FROM IssueStatus
+    WHERE Issued_date BETWEEN '2023-06-01' AND '2023-06-30'
+);
+
+
+
 
 -- 
